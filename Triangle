@@ -17,7 +17,9 @@ public:
 		std::cout << a << ' ' << b << ' ' << c << '\n';
 	}
 	bool CanToBuild() {
-		return (a < (b + c)) && (b < (a + c)) && (c < (a + b));
+		if((a < (b + c)) && (b < (a + c)) && (c < (a + b)))
+			return "Треугольник можно построить";
+		return "Треугольник невозможно построить";
 	}
 	std::string Type() {
 		if ((a == b) || (b == c)) {
@@ -38,6 +40,7 @@ public:
 	}
 };
 int main() {
+	system("chcp 1251>nul");
 	Triangle New(2, 2, 3);
 	New.getsides();
 	std::cout << New.CanToBuild()<<'\n';
