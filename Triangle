@@ -40,4 +40,8 @@ public:
 int main() {
 	Triangle New(2, 2, 3);
 	New.getsides();
+	std::cout << New.CanToBuild()<<'\n';
+	std::cout << "Треугольник " << New.Type() << '\n';
+	std::cout << "Периметр: " << New.Perimetr() << '\n';
+	std::cout << "Площадь: " << New.Area() << '\n';
 }
