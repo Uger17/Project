@@ -9,6 +9,7 @@ public:
 	unsigned int a;
 	unsigned int b;
 	unsigned int c;
+	bool CTB;
 	Triangle(unsigned int A, unsigned int B, unsigned int C) {
 		a = A;
 		b = B;
@@ -18,11 +19,16 @@ public:
 		std::cout << a << ' ' << b << ' ' << c << '\n';
 	}
 	std::string CanToBuild() {
-		if((a < (b + c)) && (b < (a + c)) && (c < (a + b)))
+		if ((a < (b + c)) && (b < (a + c)) && (c < (a + b))) {
+			CTB = 1;
 			return "Треугольник можно построить";
+		}
+		CTB = 0;
 		return "Треугольник невозможно построить";
 	}
 	std::string Type() {
+		if (CTB == 0)
+			return "невозможно построить";
 		if ((a == b) || (b == c)) {
 			if ((a == b) && (b == c))
 				return "равносторонний";
@@ -33,9 +39,13 @@ public:
 		return "разносторонний";
 	}
 	unsigned int Perimetr() {
+		if (CTB == 0)
+			return 0;
 		return a + b + c;
 	}
 	double Area(){
+		if (CTB == 0)
+			return 0;
 		double p = double(a + b + c) / 2;
 		return sqrt(p * (p - a) * (p - b) * (p - c));
 	}
