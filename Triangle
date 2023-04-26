@@ -1,0 +1,43 @@
+#include<iostream>
+#include<string>
+#include<cmath>
+
+class Triangle
+{
+public:
+	unsigned int a;
+	unsigned int b;
+	unsigned int c;
+	Triangle(unsigned int A, unsigned int B, unsigned int C) {
+		a = A;
+		b = B;
+		c = C;
+	}
+	void getsides() {
+		std::cout << a << ' ' << b << ' ' << c << '\n';
+	}
+	bool CanToBuild() {
+		return (a < (b + c)) && (b < (a + c)) && (c < (a + b));
+	}
+	std::string Type() {
+		if ((a == b) || (b == c)) {
+			if ((a == b) && (b == c))
+				return "Равносторонний";
+			return "Равнобедренный";
+		}
+		if ((a * a) == (b * b) + (c * c))
+			return "Прямоугольный";
+		return "Разносторонний";
+	}
+	unsigned int Perimetr() {
+		return a + b + c;
+	}
+	double Area(){
+		double p = (a + b + c) / 2;
+		return sqrt(p * (p - a) * (p - b) * (p - c));
+	}
+};
+int main() {
+	Triangle New(2, 2, 3);
+	New.getsides();
+}
